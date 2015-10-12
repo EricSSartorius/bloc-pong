@@ -10,20 +10,39 @@ Paddle = (x, y, width, height) ->
   @y = y
   @width = width
   @height = height
+  @y_speed = 0
 
 Paddle::render = ->
 	context.fillStyle = 'white'
 	context.fillRect @x, @y, @width, @height
 
+Paddle::goUp = ->
+	@y_speed -= 1
+	if @y_speed < -5
+		@y_speed = -5
+
+Paddle::goDown = ->
+	@y_speed += 1
+	if @y_speed > 5
+		@y_speed = 5
+
+Paddle::move = ->
+	@y += @y_speed
+	if @y < 0 
+  		@y = 0
+  		@y_speed = 0
+
+  	else if @y > canvas.height - @height
+  		@y = canvas.height - @height
+  		@y_speed = 0
+
 Player = ->
 	@paddle = new Paddle(10, 30, 10, 100)
-
 Computer = ->
 	@paddle = new Paddle(620, 30, 10, 100)
 
 Player::render = ->
 	@paddle.render()
-
 Computer::render = ->
 	@paddle.render()
 
@@ -45,19 +64,6 @@ ball = new Ball((canvas.width / 4), (canvas.height / 3))
 render = ->
 	context.fillStyle = "#000"
 	context.fillRect(0, 0, width, height)
-	#grid
-	x = 0.5
-	while x < 640
-	  context.moveTo x, 0
-	  context.lineTo x, 480
-	  x += 10
-	y = 0.5
-	while y < 480
-	  context.moveTo 0, y
-	  context.lineTo 640, y
-	  y += 10
-	context.strokeStyle = "#666"
-	context.stroke()
 	#mid-line
 	context.beginPath()
 	context.moveTo(320, 0)
@@ -70,5 +76,25 @@ render = ->
 	computer.render()
 	ball.render()
 
-window.onload = ->
+animate = window.requestAnimationFrame or window.webkitRequestAnimationFrame or window.mozRequestAnimationFrame or window.oRequestAnimationFrame or window.msRequestAnimationFrame or (callback) ->
+  window.setTimeout callback, 1000 / 60
+
+move= ->
+	player.move()
+	computer.move()
+
+step= ->
+	move()
 	render()
+	animate(step)
+
+window.addEventListener 'keydown', (event) ->
+	if event.keyCode == 38
+		player.goUp()
+		console.log("up")
+	else if event.keyCode == 40
+		player.goDown()
+		console.log("down")
+
+window.onload = ->
+	animate(step)	

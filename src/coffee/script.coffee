@@ -61,15 +61,7 @@ Ball::move = ->
 	top_wall = @y - @radius
 	bottom_wall = @y + @radius
 
-	if left_wall < 0
-		console.log("left wall")
-		@x = @radius
-		@x_speed = -@x_speed
-	else if right_wall > canvas.width
-		console.log("right wall")
-		@x = canvas.width - @radius
-		@x_speed = -@x_speed
-	else if top_wall < 0
+	if top_wall < 0
 		console.log("top wall")
 		@y = @radius
 		@y_speed = -@y_speed
@@ -77,12 +69,19 @@ Ball::move = ->
 		console.log("bottom wall")
 		@y = canvas.height - @radius
 		@y_speed = -@y_speed
-
-	# if Player.paddle1 < 0
-	# 	console.log("paddle 1 hit")
-	# 	Player.paddle1 = @radius
-	# 	@x_speed = -@x_speed
-
+	else if left_wall < 0
+		console.log("left wall: " + paddle1.x)
+		@x = @radius
+		@x_speed = -@x_speed
+	else if right_wall > canvas.width
+		console.log("right wall")
+		@x = canvas.width - @radius
+		@x_speed = -@x_speed
+	if  ball.x < (paddle1.x+paddle1.width) && (ball.x+ball.width) > paddle1.x && (ball.y+ball.height) > paddle1.y && ball.y < (paddle1.y+paddle1.height) 
+		console.log("player paddle hit")
+		@x_speed = -3
+		@y_speed += (paddle1.y_speed / 2)
+		@x_speed = -@x_speed
 
 Ball::render = ->
 	context.beginPath()
@@ -90,6 +89,7 @@ Ball::render = ->
 	context.fillStyle = 'white'
 	context.fill()
 
+paddle1 = new Paddle(10, (canvas.height / 2 - 50), 10, 100)
 player = new Player
 computer = new Computer
 ball = new Ball((canvas.width / 2), (canvas.height / 2))

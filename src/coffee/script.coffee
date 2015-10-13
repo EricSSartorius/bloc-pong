@@ -37,30 +37,52 @@ Paddle::move = ->
   		@y_speed = 0
 
 Player = ->
-	@paddle = new Paddle(10, (canvas.height / 2 - 50), 10, 100)
+	@paddle1 = new Paddle(10, (canvas.height / 2 - 50), 10, 100)
 Computer = ->
-	@paddle = new Paddle(620,  (canvas.height / 2 - 50), 10, 100)
+	@paddle2 = new Paddle(620,  (canvas.height / 2 - 50), 10, 100)
 
 Player::render = ->
-	@paddle.render()
+	@paddle1.render()
 Computer::render = ->
-	@paddle.render()
+	@paddle2.render()
 
 Ball = (x, y) ->
 	@x = x
 	@y = y
-	@radius = 10
-	@x_speed = 3
-	@y_speed = Math.floor(Math.random() * (3  + 3 + 1)) + -3
-
-update = ->
-  ball.update()
-  return
+	@radius = 7
+	@x_speed = -3
+	@y_speed = Math.floor(Math.random() * 7) + -3
 
 Ball::move = ->
-  @x += @x_speed
-  @y += @y_speed
-  return
+	@x += @x_speed
+	@y += @y_speed
+	left_wall = @x - @radius
+	right_wall = @x + @radius
+	top_wall = @y - @radius
+	bottom_wall = @y + @radius
+
+	if left_wall < 0
+		console.log("left wall")
+		@x = @radius
+		@x_speed = -@x_speed
+	else if right_wall > canvas.width
+		console.log("right wall")
+		@x = canvas.width - @radius
+		@x_speed = -@x_speed
+	else if top_wall < 0
+		console.log("top wall")
+		@y = @radius
+		@y_speed = -@y_speed
+	else if bottom_wall > canvas.height
+		console.log("bottom wall")
+		@y = canvas.height - @radius
+		@y_speed = -@y_speed
+
+	# if Player.paddle1 < 0
+	# 	console.log("paddle 1 hit")
+	# 	Player.paddle1 = @radius
+	# 	@x_speed = -@x_speed
+
 
 Ball::render = ->
 	context.beginPath()
@@ -79,7 +101,7 @@ render = ->
 	context.beginPath()
 	context.moveTo(320, 0)
 	context.lineTo(320, 480)
-	context.lineWidth = 4
+	context.lineWidth = 2
 	context.strokeStyle = "#fff"
 	context.stroke()
 

@@ -140,12 +140,6 @@
   render = function() {
     context.fillStyle = "#000";
     context.fillRect(0, 0, width, height);
-    context.beginPath();
-    context.moveTo(320, 0);
-    context.lineTo(320, 480);
-    context.lineWidth = 2;
-    context.strokeStyle = "#fff";
-    context.stroke();
     player.render();
     computer.render();
     return ball.render();

@@ -109,6 +109,7 @@ Ball::render = ->
 	context.fill()
 
 # paddle1 = new Paddle(10, (canvas.height / 2 - 50), 10, 100)
+# paddle2 = new Paddle(620,  (canvas.height / 2 - 50), 10, 100)
 player = new Player
 computer = new Computer
 ball = new Ball((canvas.width / 2), (canvas.height / 2))
@@ -116,14 +117,6 @@ ball = new Ball((canvas.width / 2), (canvas.height / 2))
 render = ->
 	context.fillStyle = "#000"
 	context.fillRect(0, 0, width, height)
-	#mid-line
-	context.beginPath()
-	context.moveTo(320, 0)
-	context.lineTo(320, 480)
-	context.lineWidth = 2
-	context.strokeStyle = "#fff"
-	context.stroke()
-
 	player.render()
 	computer.render()
 	ball.render()

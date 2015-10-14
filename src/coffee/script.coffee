@@ -7,7 +7,7 @@ context = canvas.getContext("2d")
 Lscore = 0
 Rscore = 0
 scoreBoard = document.getElementById('score')
-scoreBoard.innerText = "0-0"
+scoreBoard.innerText = "#{Lscore} - #{Rscore}"
 
 Paddle = (x, y, width, height) ->
 	@x = x
@@ -71,23 +71,36 @@ Ball::move = ->
 	else if bottom_wall > canvas.height
 		@y = canvas.height - @radius
 		@y_speed = -@y_speed
+
 	else if left_wall < 0
 		Rscore += 1
-		console.log("Computer: #{Rscore}")
 		scoreBoard.innerText = "#{Lscore} - #{Rscore}"
-		@x = @radius
-		@x_speed = -@x_speed
+		@x = canvas.width / 2
+		@y = canvas.height / 2
+		@x_speed = 3
+		@y_speed = Math.floor(Math.random() * 7) + -3
 	else if right_wall > canvas.width
 		Lscore += 1
-		console.log("Player: #{Lscore}")
 		scoreBoard.innerText = "#{Lscore} - #{Rscore}"
-		@x = canvas.width - @radius
-		@x_speed = -@x_speed
-	if  ball.x < (paddle1.x+paddle1.width) && (ball.x+ball.width) > paddle1.x && (ball.y+ball.height) > paddle1.y && ball.y < (paddle1.y+paddle1.height) 
-		console.log("player paddle hit")
+		@x = canvas.width / 2
+		@y = canvas.height / 2
 		@x_speed = -3
-		@y_speed += (paddle1.y_speed / 2)
-		@x_speed = -@x_speed
+		@y_speed = Math.floor(Math.random() * 7) + -3
+
+	# if  ball.x < (paddle1.x+paddle1.width) && (ball.x+ball.width) > paddle1.x && (ball.y+ball.height) > paddle1.y && ball.y < (paddle1.y+paddle1.height) 
+	# 	console.log("player paddle hit")
+	# 	@x_speed = -3
+	# 	@y_speed += (paddle1.y_speed / 2)
+	# 	@x_speed = -@x_speed
+	
+	if Lscore == 11
+		document.getElementById('winner').innerText = "Player 1 wins! Refresh to play again."
+		@x_speed = 0
+		@y_speed = 0
+	else if Rscore == 11
+		document.getElementById('winner').innerText = "Computer wins! Refresh to play again."
+		@x_speed = 0
+		@y_speed = 0
 
 Ball::render = ->
 	context.beginPath()
@@ -95,7 +108,7 @@ Ball::render = ->
 	context.fillStyle = 'white'
 	context.fill()
 
-paddle1 = new Paddle(10, (canvas.height / 2 - 50), 10, 100)
+# paddle1 = new Paddle(10, (canvas.height / 2 - 50), 10, 100)
 player = new Player
 computer = new Computer
 ball = new Ball((canvas.width / 2), (canvas.height / 2))

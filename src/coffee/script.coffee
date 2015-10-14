@@ -4,6 +4,10 @@ height = 480
 canvas.width = width
 canvas.height = height
 context = canvas.getContext("2d")
+Lscore = 0
+Rscore = 0
+scoreBoard = document.getElementById('score')
+scoreBoard.innerText = "0-0"
 
 Paddle = (x, y, width, height) ->
 	@x = x
@@ -62,19 +66,21 @@ Ball::move = ->
 	bottom_wall = @y + @radius
 
 	if top_wall < 0
-		console.log("top wall")
 		@y = @radius
 		@y_speed = -@y_speed
 	else if bottom_wall > canvas.height
-		console.log("bottom wall")
 		@y = canvas.height - @radius
 		@y_speed = -@y_speed
 	else if left_wall < 0
-		console.log("left wall: " + paddle1.x)
+		Rscore += 1
+		console.log("Computer: #{Rscore}")
+		scoreBoard.innerText = "#{Lscore} - #{Rscore}"
 		@x = @radius
 		@x_speed = -@x_speed
 	else if right_wall > canvas.width
-		console.log("right wall")
+		Lscore += 1
+		console.log("Player: #{Lscore}")
+		scoreBoard.innerText = "#{Lscore} - #{Rscore}"
 		@x = canvas.width - @radius
 		@x_speed = -@x_speed
 	if  ball.x < (paddle1.x+paddle1.width) && (ball.x+ball.width) > paddle1.x && (ball.y+ball.height) > paddle1.y && ball.y < (paddle1.y+paddle1.height) 

@@ -86,6 +86,8 @@
 
   Ball.prototype.move = function() {
     var bottom_wall, left_wall, right_wall, top_wall;
+    console.log("Player x,y: " + player.x + "," + player.y);
+    console.log("Computer x,y: " + computer.x + "," + computer.y);
     this.x += this.x_speed;
     this.y += this.y_speed;
     left_wall = this.x - this.radius;

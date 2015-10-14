@@ -58,6 +58,8 @@ Ball = (x, y) ->
 	@y_speed = Math.floor(Math.random() * 7) + -3
 
 Ball::move = ->
+	console.log "Player x,y: #{player.x},#{player.y}"
+	console.log "Computer x,y: #{computer.x},#{computer.y}"
 	@x += @x_speed
 	@y += @y_speed
 	left_wall = @x - @radius

@@ -3,11 +3,11 @@ width = 640
 height = 480
 canvas.width = width
 canvas.height = height
-context = canvas.getContext("2d")
-Lscore = 0
-Rscore = 0
-scoreBoard = document.getElementById('score')
-scoreBoard.innerText = "#{Lscore} - #{Rscore}"
+window.context = canvas.getContext("2d")
+window.leftScore = 0
+window.rightScore = 0
+window.scoreBoard = document.getElementById('score')
+scoreBoard.innerText = "#{leftScore} - #{rightScore}"
 
 Paddle = (x, y, width, height) ->
 	@x = x
@@ -50,71 +50,9 @@ Player::render = ->
 Computer::render = ->
 	@paddle2.render()
 
-Ball = (x, y) ->
-	@x = x
-	@y = y
-	@radius = 7
-	@x_speed = -3
-	@y_speed = Math.floor(Math.random() * 7) + -3
-
-Ball::move = ->
-	console.log "Player x,y: #{player.x},#{player.y}"
-	console.log "Computer x,y: #{computer.x},#{computer.y}"
-	@x += @x_speed
-	@y += @y_speed
-	left_wall = @x - @radius
-	right_wall = @x + @radius
-	top_wall = @y - @radius
-	bottom_wall = @y + @radius
-
-	if top_wall < 0
-		@y = @radius
-		@y_speed = -@y_speed
-	else if bottom_wall > canvas.height
-		@y = canvas.height - @radius
-		@y_speed = -@y_speed
-
-	else if left_wall < 0
-		Rscore += 1
-		scoreBoard.innerText = "#{Lscore} - #{Rscore}"
-		@x = canvas.width / 2
-		@y = canvas.height / 2
-		@x_speed = 3
-		@y_speed = Math.floor(Math.random() * 7) + -3
-	else if right_wall > canvas.width
-		Lscore += 1
-		scoreBoard.innerText = "#{Lscore} - #{Rscore}"
-		@x = canvas.width / 2
-		@y = canvas.height / 2
-		@x_speed = -3
-		@y_speed = Math.floor(Math.random() * 7) + -3
-
-	# if  ball.x < (paddle1.x+paddle1.width) && (ball.x+ball.width) > paddle1.x && (ball.y+ball.height) > paddle1.y && ball.y < (paddle1.y+paddle1.height) 
-	# 	console.log("player paddle hit")
-	# 	@x_speed = -3
-	# 	@y_speed += (paddle1.y_speed / 2)
-	# 	@x_speed = -@x_speed
-	
-	if Lscore == 11
-		document.getElementById('winner').innerText = "Player 1 wins! Refresh to play again."
-		@x_speed = 0
-		@y_speed = 0
-	else if Rscore == 11
-		document.getElementById('winner').innerText = "Computer wins! Refresh to play again."
-		@x_speed = 0
-		@y_speed = 0
-
-Ball::render = ->
-	context.beginPath()
-	context.arc @x, @y, @radius, 2 * Math.PI, false
-	context.fillStyle = 'white'
-	context.fill()
-
-# paddle1 = new Paddle(10, (canvas.height / 2 - 50), 10, 100)
-# paddle2 = new Paddle(620,  (canvas.height / 2 - 50), 10, 100)
-player = new Player
-computer = new Computer
-ball = new Ball((canvas.width / 2), (canvas.height / 2))
+window.player = new Player
+window.computer = new Computer
+window.ball = new Ball((canvas.width / 2), (canvas.height / 2))
 
 render = ->
 	context.fillStyle = "#000"
@@ -134,6 +72,7 @@ move= ->
 step= ->
 	move()
 	render()
+	#
 	animate(step)
 
 window.addEventListener 'keydown', (event) ->

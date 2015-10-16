@@ -39,13 +39,9 @@
       this.x_speed = -3;
       this.y_speed = Math.floor(Math.random() * 7) + -3;
     }
-    if (ball.x - this.radius < player.x + player.width) {
-      if (ball.y > player.y && ball.y < player.y + player.height) {
+    if (ball.x - this.radius < player.x + player.width || ball.x + this.radius > computer.x) {
+      if (ball.y > player.y && ball.y < player.y + player.height || ball.y > computer.y && ball.y < computer.y + computer.height) {
         console.log("player paddle hit");
-      }
-    } else if (ball.x > computer.x) {
-      if (ball.y > computer.y && ball.y < computer.y + computer.height) {
-        console.log("computer paddle hit");
         this.x_speed = -this.x_speed;
       }
     }

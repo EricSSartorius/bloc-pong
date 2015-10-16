@@ -37,12 +37,12 @@ Ball::move = ->
 		@x_speed = -3
 		@y_speed = Math.floor(Math.random() * 7) + -3
 
-	if ball.x - @radius < player.x + player.width
-		if ball.y > player.y and ball.y < player.y + player.height 
+	if ball.x - @radius < player.x + player.width or ball.x + @radius > computer.x
+		if ball.y > player.y and ball.y < player.y + player.height or ball.y > computer. y and ball.y < computer.y + computer.height
 			console.log("player paddle hit")
-	else if ball.x > computer.x
-		if ball.y > computer.y and ball.y < computer.y + computer.height 
-			console.log("computer paddle hit")
+	
+		# else if ball.y > computer.y and ball.y < computer.y + computer.height 
+		# 	console.log("computer paddle hit")
 			#@x_speed = -3
 			#@y_speed += (player.y_speed / 2)
 			@x_speed = -@x_speed

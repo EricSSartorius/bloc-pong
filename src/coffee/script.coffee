@@ -9,47 +9,6 @@ window.rightScore = 0
 window.scoreBoard = document.getElementById('score')
 scoreBoard.innerText = "#{leftScore} - #{rightScore}"
 
-Paddle = (x, y, width, height) ->
-	@x = x
-	@y = y
-	@width = width
-	@height = height
-	@y_speed = 0
-
-Paddle::render = ->
-	context.fillStyle = 'white'
-	context.fillRect @x, @y, @width, @height
-
-Paddle::goUp = ->
-	@y_speed -= 1
-	if @y_speed < -5
-		@y_speed = -5
-
-Paddle::goDown = ->
-	@y_speed += 1
-	if @y_speed > 5
-		@y_speed = 5
-
-Paddle::move = ->
-	@y += @y_speed
-	if @y < 0 
-  		@y = 0
-  		@y_speed = 0
-
-  	else if @y > canvas.height - @height
-  		@y = canvas.height - @height
-  		@y_speed = 0
-
-Player = ->
-	@paddle1 = new Paddle(10, (canvas.height / 2 - 50), 10, 100)
-Computer = ->
-	@paddle2 = new Paddle(620,  (canvas.height / 2 - 50), 10, 100)
-
-Player::render = ->
-	@paddle1.render()
-Computer::render = ->
-	@paddle2.render()
-
 window.player = new Player
 window.computer = new Computer
 window.ball = new Ball((canvas.width / 2), (canvas.height / 2))

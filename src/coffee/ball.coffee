@@ -40,6 +40,9 @@ Ball::move = ->
 	if ball.x - @radius < player.x + player.width
 		if ball.y > player.y and ball.y < player.y + player.height 
 			console.log("player paddle hit")
+	else if ball.x > computer.x
+		if ball.y > computer.y and ball.y < computer.y + computer.height 
+			console.log("computer paddle hit")
 			#@x_speed = -3
 			#@y_speed += (player.y_speed / 2)
 			@x_speed = -@x_speed

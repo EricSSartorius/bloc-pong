@@ -42,6 +42,10 @@
     if (ball.x - this.radius < player.x + player.width) {
       if (ball.y > player.y && ball.y < player.y + player.height) {
         console.log("player paddle hit");
+      }
+    } else if (ball.x > computer.x) {
+      if (ball.y > computer.y && ball.y < computer.y + computer.height) {
+        console.log("computer paddle hit");
         this.x_speed = -this.x_speed;
       }
     }

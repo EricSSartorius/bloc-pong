@@ -1,4 +1,4 @@
-Paddle = (x, y, width, height) ->
+window.Paddle = (x, y, width, height) ->
 	@x = x
 	@y = y
 	@width = width

@@ -10,8 +10,6 @@
 
   Ball.prototype.move = function() {
     var bottom_wall, left_wall, right_wall, top_wall;
-    console.log("Player x,y: " + player.x + "," + player.y);
-    console.log("Computer x,y: " + computer.x + "," + computer.y);
     this.x += this.x_speed;
     this.y += this.y_speed;
     left_wall = this.x - this.radius;
@@ -41,7 +39,6 @@
     }
     if (ball.x - this.radius < player.x + player.width || ball.x + this.radius > computer.x) {
       if (ball.y > player.y && ball.y < player.y + player.height || ball.y > computer.y && ball.y < computer.y + computer.height) {
-        console.log("player paddle hit");
         this.x_speed = -this.x_speed;
       }
     }

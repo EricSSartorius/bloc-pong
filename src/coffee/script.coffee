@@ -23,15 +23,27 @@ render = ->
 animate = window.requestAnimationFrame or window.webkitRequestAnimationFrame or window.mozRequestAnimationFrame or window.oRequestAnimationFrame or window.msRequestAnimationFrame or (callback) ->
  	window.setTimeout callback, 1000 / 60
 
-move= ->
+update = ->
+ 	computer.update()
+
+move = ->
 	player.move()
 	computer.move()
 	ball.move()
 
-step= ->
+keepScore = ->
+	# if left_wall < 0
+	# 	rightScore += 1
+	# 	scoreBoard.innerText = "#{leftScore} - #{rightScore}"
+	# else if right_wall > canvas.width
+	# 	leftScore += 1
+	# 	scoreBoard.innerText = "#{leftScore} - #{rightScore}"
+
+step = ->
 	move()
 	render()
-	#
+	keepScore()
+	update(ball)
 	animate(step)
 
 window.addEventListener 'keydown', (event) ->

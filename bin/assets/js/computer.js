@@ -4,6 +4,16 @@
     return this.paddle2 = new Paddle(620, canvas.height / 2 - 50, 10, 100);
   };
 
+  Computer.prototype.update = function() {
+    if (ball.y > computer.y + computer.height) {
+      return computer.goUp();
+    } else if (ball.y < computer.y) {
+      return computer.goDown();
+    } else if (ball.y > computer.y && ball.y < computer.y + computer.height) {
+      return computer.y_speed = 0;
+    }
+  };
+
   Computer.prototype.render = function() {
     return this.paddle2.render();
   };

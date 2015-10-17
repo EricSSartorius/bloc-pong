@@ -39,8 +39,14 @@
     }
     if (ball.x_speed < 0 && ball.x - this.radius < player.x + player.width && ball.y > player.y && ball.y < player.y + player.height) {
       this.x_speed = Math.abs(this.x_speed);
+      if (this.y_speed > 0) {
+        this.y_speed++;
+      } else {
+        ball.y_speed--;
+      }
     } else if (ball.x_speed > 0 && ball.x + this.radius > computer.x && ball.y > computer.y && ball.y < computer.y + computer.height) {
       this.x_speed = -Math.abs(this.x_speed);
+      this.x_speed--;
     }
     if (leftScore === 11) {
       document.getElementById('winner').innerText = "Player 1 wins! Refresh to play again.";

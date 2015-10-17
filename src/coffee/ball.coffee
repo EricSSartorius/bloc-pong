@@ -36,16 +36,16 @@ Ball::move = ->
 		@x_speed = -3
 		@y_speed = Math.floor(Math.random() * 7) + -3
 #
-
 	if ball.x_speed < 0 and ball.x - @radius < player.x + player.width and ball.y > player.y and ball.y < player.y + player.height
 	  @x_speed = Math.abs(@x_speed)
+	  if @y_speed > 0
+	    @y_speed++
+	  else
+	    ball.y_speed--
 	else if ball.x_speed > 0 and ball.x + @radius > computer.x and ball.y > computer.y and ball.y < computer.y + computer.height
 	  @x_speed = -Math.abs(@x_speed)
+	  @x_speed--
 
-
-
-
-	
 	if leftScore == 11
 		document.getElementById('winner').innerText = "Player 1 wins! Refresh to play again."
 		@x_speed = 0

@@ -16,9 +16,9 @@
 
   Computer.prototype.update = function() {
     if (ball.y > this.y + this.height) {
-      return this.goUp();
-    } else if (ball.y < this.y) {
       return this.goDown();
+    } else if (ball.y < this.y) {
+      return this.goUp();
     } else if (ball.y > this.y && ball.y < this.y + this.height) {
       return this.y_speed = 0;
     }

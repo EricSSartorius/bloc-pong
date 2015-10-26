@@ -1,0 +1,33 @@
+{
+  "name": "bloc-pong",
+  "version": "1.0.0",
+  "description": "",
+  "main": "karma.conf.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "karma": "^0.13.14",
+    "jasmine-core": "^2.3.4",
+    "karma-jasmine": "^0.3.6"
+  },
+  "devDependencies": {
+    "coffee-script": "^1.10.0",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "phantomjs": "^1.9.18"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EricSSartorius/bloc-pong.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EricSSartorius/bloc-pong/issues"
+  },
+  "homepage": "https://github.com/EricSSartorius/bloc-pong"
+}

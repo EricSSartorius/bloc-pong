@@ -17,6 +17,8 @@
     this.y_speed -= 1;
     if (this.y_speed < -5) {
       return this.y_speed = -5;
+    } else if (this.y_speed > 2) {
+      return this.y_speed -= 3;
     }
   };
 
@@ -24,6 +26,8 @@
     this.y_speed += 1;
     if (this.y_speed > 5) {
       return this.y_speed = 5;
+    } else if (this.y_speed < -2) {
+      return this.y_speed += 3;
     }
   };
 

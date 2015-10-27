@@ -41,7 +41,15 @@
       return this.animate()(this.step.bind(this));
     };
 
-    Game.prototype.keepScore = function() {};
+    Game.prototype.keepScore = function() {
+      if (this.left_wall < 0) {
+        rightScore += 1;
+        return scoreBoard.innerText = "" + leftScore + " - " + rightScore;
+      } else if (this.right_wall > canvas.width) {
+        leftScore += 1;
+        return scoreBoard.innerText = "" + leftScore + " - " + rightScore;
+      }
+    };
 
     Game.prototype.step = function() {
       this.move();

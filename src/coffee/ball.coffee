@@ -36,7 +36,7 @@ Ball::move = ->
 		@x_speed = -3
 		@y_speed = Math.floor(Math.random() * 7) + -3
 #
-	if ball.x_speed < 0 and ball.x - @radius < player.x + player.width and ball.y > player.y and ball.y < player.y + player.height
+	if ball.x_speed < 0 and ball.x - @radius < paddle.x + paddle.width and ball.y > paddle.y and ball.y < paddle.y + paddle.height
 	  @x_speed = Math.abs(@x_speed)
 	  if @y_speed > 0
 	    @y_speed++

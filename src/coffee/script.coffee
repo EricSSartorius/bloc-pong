@@ -5,15 +5,15 @@ window.rightScore = 0
 window.scoreBoard = document.getElementById('score')
 scoreBoard.innerText = "#{leftScore} - #{rightScore}"
 
-window.player = new Paddle(10, (canvas.height / 2 - 50), 10, 100)
+window.paddle = new Paddle(10, (canvas.height / 2 - 50), 10, 100)
 window.computer = new Computer
 window.ball = new Ball((canvas.width / 2), (canvas.height / 2))
 
 window.addEventListener 'keydown', (event) ->
 	if event.keyCode == 38
-		player.goUp()
+		paddle.goUp()
 	else if event.keyCode == 40
-		player.goDown()
+		paddle.goDown()
 
 window.onload = ->
 	game = new Game

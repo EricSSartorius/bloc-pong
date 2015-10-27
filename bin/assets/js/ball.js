@@ -37,7 +37,7 @@
       this.x_speed = -3;
       this.y_speed = Math.floor(Math.random() * 7) + -3;
     }
-    if (ball.x_speed < 0 && ball.x - this.radius < player.x + player.width && ball.y > player.y && ball.y < player.y + player.height) {
+    if (ball.x_speed < 0 && ball.x - this.radius < paddle.x + paddle.width && ball.y > paddle.y && ball.y < paddle.y + paddle.height) {
       this.x_speed = Math.abs(this.x_speed);
       if (this.y_speed > 0) {
         this.y_speed++;

@@ -14,7 +14,7 @@
 
   scoreBoard.innerText = "" + leftScore + " - " + rightScore;
 
-  window.player = new Paddle(10, canvas.height / 2 - 50, 10, 100);
+  window.paddle = new Paddle(10, canvas.height / 2 - 50, 10, 100);
 
   window.computer = new Computer;
 
@@ -22,9 +22,9 @@
 
   window.addEventListener('keydown', function(event) {
     if (event.keyCode === 38) {
-      return player.goUp();
+      return paddle.goUp();
     } else if (event.keyCode === 40) {
-      return player.goDown();
+      return paddle.goDown();
     }
   });
 

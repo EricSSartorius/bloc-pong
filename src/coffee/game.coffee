@@ -8,7 +8,7 @@ class window.Game
 	render: ->
 		context.fillStyle = "#000"
 		context.fillRect(0, 0, width, height)
-		player.render()
+		paddle.render()
 		computer.render()
 		ball.render()
 
@@ -20,7 +20,7 @@ class window.Game
  		computer.update()
 
 	move: ->
-		player.move()
+		paddle.move()
 		computer.move()
 		ball.move()
 
@@ -28,20 +28,20 @@ class window.Game
     	@animate()(@step.bind(@))
 
 	keepScore: ->
-		if @left_wall < 0
-			rightScore += 1
-			scoreBoard.innerText = "#{leftScore} - #{rightScore}"
-			# @x = canvas.width / 2
-			# @y = canvas.height / 2
-			# @x_speed = 3
-			# @y_speed = Math.floor(Math.random() * 7) + -3
-		else if @right_wall > canvas.width
-			leftScore += 1
-			scoreBoard.innerText = "#{leftScore} - #{rightScore}"
-			# @x = canvas.width / 2
-			# @y = canvas.height / 2
-			# @x_speed = -3
-			# @y_speed = Math.floor(Math.random() * 7) + -3
+		# if left_wall < 0
+		# 	rightScore += 1
+		# 	scoreBoard.innerText = "#{leftScore} - #{rightScore}"
+		# 	@x = canvas.width / 2
+		# 	@y = canvas.height / 2
+		# 	@x_speed = 3
+		# 	@y_speed = Math.floor(Math.random() * 7) + -3
+		# else if right_wall > canvas.width
+		# 	leftScore += 1
+		# 	scoreBoard.innerText = "#{leftScore} - #{rightScore}"
+		# 	@x = canvas.width / 2
+		# 	@y = canvas.height / 2
+		# 	@x_speed = -3
+		# 	@y_speed = Math.floor(Math.random() * 7) + -3
 
 	step: ->
 		@move()
@@ -49,9 +49,3 @@ class window.Game
 		@keepScore()
 		@update()
 		@animate()(@step.bind(@))
-
-	# window.addEventListener 'keydown', (event) ->
-	# 	if event.keyCode == 38
-	# 		player.goUp()
-	# 	else if event.keyCode == 40
-	# 		player.goDown()

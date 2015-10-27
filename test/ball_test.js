@@ -1,29 +1,25 @@
 describe("Ball", function() {
   it("ball bounces off computer paddle", function() {
-    // window.canvas = {height:480};
-    // window.ball = new Ball();
+    window.canvas = {height:480};
+    window.ball = new Ball();
 
-    // var computer = new Computer();
-    // var y = computer.y;
-    // ball.y = computer.y - 5;
+    var computer = new Computer();
 
-    // computer.update();
-    // computer.move();
+    ball.move();
+    computer.move();
 
-    // expect(computer.y).toBe(y-1);
+    expect(y_speed).toBe(y_speed *= -1);
   });
 
   it("ball bounces off player paddle", function() {
-    // window.canvas = {height:480};
-    // window.ball = new Ball();
+    window.canvas = {height:480};
+    window.ball = new Ball();
 
-    // var computer = new Computer();
-    // var y = computer.y;
-    // ball.y = computer.y + 110;
+    var paddle = new Paddle();
 
-    // computer.update();
-    // computer.move();
+    ball.move();
+    paddle.move();
 
-    // expect(computer.y).toBe(y+1);
+    expect(y_speed).toBe(y_speed*= -1);
   });
 });

@@ -16,7 +16,7 @@
     Game.prototype.render = function() {
       context.fillStyle = "#000";
       context.fillRect(0, 0, width, height);
-      player.render();
+      paddle.render();
       computer.render();
       return ball.render();
     };
@@ -32,7 +32,7 @@
     };
 
     Game.prototype.move = function() {
-      player.move();
+      paddle.move();
       computer.move();
       return ball.move();
     };
@@ -41,15 +41,7 @@
       return this.animate()(this.step.bind(this));
     };
 
-    Game.prototype.keepScore = function() {
-      if (this.left_wall < 0) {
-        rightScore += 1;
-        return scoreBoard.innerText = "" + leftScore + " - " + rightScore;
-      } else if (this.right_wall > canvas.width) {
-        leftScore += 1;
-        return scoreBoard.innerText = "" + leftScore + " - " + rightScore;
-      }
-    };
+    Game.prototype.keepScore = function() {};
 
     Game.prototype.step = function() {
       this.move();

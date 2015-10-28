@@ -9,11 +9,9 @@
   };
 
   Ball.prototype.move = function() {
-    var bottom_wall, left_wall, right_wall, top_wall;
+    var bottom_wall, top_wall;
     this.x += this.x_speed;
     this.y += this.y_speed;
-    left_wall = this.x - this.radius;
-    right_wall = this.x + this.radius;
     top_wall = this.y - this.radius;
     bottom_wall = this.y + this.radius;
     if (top_wall < 0) {
@@ -22,20 +20,6 @@
     } else if (bottom_wall > canvas.height) {
       this.y = canvas.height - this.radius;
       this.y_speed = -this.y_speed;
-    } else if (left_wall < 0) {
-      rightScore += 1;
-      scoreBoard.innerText = "" + leftScore + " - " + rightScore;
-      this.x = canvas.width / 2;
-      this.y = canvas.height / 2;
-      this.x_speed = 3;
-      this.y_speed = Math.floor(Math.random() * 7) + -3;
-    } else if (right_wall > canvas.width) {
-      leftScore += 1;
-      scoreBoard.innerText = "" + leftScore + " - " + rightScore;
-      this.x = canvas.width / 2;
-      this.y = canvas.height / 2;
-      this.x_speed = -3;
-      this.y_speed = Math.floor(Math.random() * 7) + -3;
     }
     if (ball.x_speed < 0 && ball.x - this.radius < paddle.x + paddle.width && ball.y > paddle.y && ball.y < paddle.y + paddle.height) {
       this.x_speed = Math.abs(this.x_speed);

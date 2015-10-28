@@ -41,7 +41,26 @@
       return this.animate()(this.step.bind(this));
     };
 
-    Game.prototype.keepScore = function() {};
+    Game.prototype.keepScore = function() {
+      var left_wall, right_wall;
+      left_wall = ball.x - ball.radius;
+      right_wall = ball.x + ball.radius;
+      if (left_wall < 0) {
+        rightScore += 1;
+        scoreBoard.innerText = "" + leftScore + " - " + rightScore;
+        ball.x = canvas.width / 2;
+        ball.y = canvas.height / 2;
+        ball.x_speed = 3;
+        return ball.y_speed = Math.floor(Math.random() * 7) + -3;
+      } else if (right_wall > canvas.width) {
+        leftScore += 1;
+        scoreBoard.innerText = "" + leftScore + " - " + rightScore;
+        ball.x = canvas.width / 2;
+        ball.y = canvas.height / 2;
+        ball.x_speed = -3;
+        return ball.y_speed = Math.floor(Math.random() * 7) + -3;
+      }
+    };
 
     Game.prototype.step = function() {
       this.move();

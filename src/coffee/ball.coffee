@@ -8,8 +8,6 @@ window.Ball = (x, y) ->
 Ball::move = ->
 	@x += @x_speed
 	@y += @y_speed
-	left_wall = @x - @radius
-	right_wall = @x + @radius
 	top_wall = @y - @radius
 	bottom_wall = @y + @radius
 
@@ -19,22 +17,6 @@ Ball::move = ->
 	else if bottom_wall > canvas.height
 		@y = canvas.height - @radius
 		@y_speed = -@y_speed
-
-# #TO BE PUT IN keepScore FUNCTION
-	else if left_wall < 0
-		rightScore += 1
-		scoreBoard.innerText = "#{leftScore} - #{rightScore}"
-		@x = canvas.width / 2
-		@y = canvas.height / 2
-		@x_speed = 3
-		@y_speed = Math.floor(Math.random() * 7) + -3
-	else if right_wall > canvas.width
-		leftScore += 1
-		scoreBoard.innerText = "#{leftScore} - #{rightScore}"
-		@x = canvas.width / 2
-		@y = canvas.height / 2
-		@x_speed = -3
-		@y_speed = Math.floor(Math.random() * 7) + -3
 #
 	if ball.x_speed < 0 and ball.x - @radius < paddle.x + paddle.width and ball.y > paddle.y and ball.y < paddle.y + paddle.height
 	  @x_speed = Math.abs(@x_speed)

@@ -10,6 +10,7 @@ window.computer = new Computer
 window.ball = new Ball((canvas.width / 2), (canvas.height / 2))
 
 window.addEventListener 'keydown', (event) ->
+	console.log('keydown');
 	if event.keyCode == 38
 		paddle.goUp()
 	else if event.keyCode == 40

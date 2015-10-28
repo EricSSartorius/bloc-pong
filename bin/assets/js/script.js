@@ -21,6 +21,7 @@
   window.ball = new Ball(canvas.width / 2, canvas.height / 2);
 
   window.addEventListener('keydown', function(event) {
+    console.log('keydown');
     if (event.keyCode === 38) {
       return paddle.goUp();
     } else if (event.keyCode === 40) {

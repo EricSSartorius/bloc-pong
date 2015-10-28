@@ -14,31 +14,20 @@
   };
 
   Paddle.prototype.goUp = function() {
-    this.y_speed -= 1;
-    if (this.y_speed < -5) {
-      return this.y_speed = -5;
-    } else if (this.y_speed > 2) {
-      return this.y_speed -= 3;
-    }
+    return this.y_speed -= 10;
   };
 
   Paddle.prototype.goDown = function() {
-    this.y_speed += 1;
-    if (this.y_speed > 5) {
-      return this.y_speed = 5;
-    } else if (this.y_speed < -2) {
-      return this.y_speed += 3;
-    }
+    return this.y_speed += 10;
   };
 
   Paddle.prototype.move = function() {
     this.y += this.y_speed;
+    this.y_speed = this.y_speed / 1.1;
     if (this.y < 0) {
-      this.y = 0;
-      return this.y_speed = 0;
+      return this.y = 0;
     } else if (this.y > canvas.height - this.height) {
-      this.y = canvas.height - this.height;
-      return this.y_speed = 0;
+      return this.y = canvas.height - this.height;
     }
   };
 

@@ -5,7 +5,7 @@ describe("Paddle", function() {
 
     paddle.goUp();
 
-    expect(paddle.y_speed).toBe(y_speed-1);
+    expect(paddle.y_speed).toBe(y_speed-10);
   });
 
   it("moves down when down key is pushed", function() {
@@ -14,6 +14,6 @@ describe("Paddle", function() {
 
     paddle.goDown();
 
-    expect(paddle.y_speed).toBe(y_speed+1);
+    expect(paddle.y_speed).toBe(y_speed+10);
   });
 });

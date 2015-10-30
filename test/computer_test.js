@@ -10,7 +10,7 @@ describe("Computer", function() {
     computer.update();
     computer.move();
 
-    expect(computer.y).toBe(y-1);
+    expect(computer.y).toBe(y-10);
   });
 
   it("moves down when ball is down", function() {
@@ -24,6 +24,6 @@ describe("Computer", function() {
     computer.update();
     computer.move();
 
-    expect(computer.y).toBe(y+1);
+    expect(computer.y).toBe(y+10);
   });
 });

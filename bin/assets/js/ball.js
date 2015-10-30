@@ -8,6 +8,13 @@
     return this.y_speed = Math.floor(Math.random() * 7) + -3;
   };
 
+  Ball.prototype.reset = function() {
+    ball.x = canvas.width / 2;
+    ball.y = canvas.height / 2;
+    ball.x_speed = 3;
+    return ball.y_speed = Math.floor(Math.random() * 7) + -3;
+  };
+
   Ball.prototype.move = function() {
     var bottom_wall, top_wall;
     this.x += this.x_speed;

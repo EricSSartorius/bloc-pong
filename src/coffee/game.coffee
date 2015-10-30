@@ -34,17 +34,11 @@ class window.Game
     if left_wall < 0
       rightScore += 1
       scoreBoard.innerText = "#{leftScore} - #{rightScore}"
-      ball.x = canvas.width / 2
-      ball.y = canvas.height / 2
-      ball.x_speed = 3
-      ball.y_speed = Math.floor(Math.random() * 7) + -3
+      ball.reset()
     else if right_wall > canvas.width
       leftScore += 1
       scoreBoard.innerText = "#{leftScore} - #{rightScore}"
-      ball.x = canvas.width / 2
-      ball.y = canvas.height / 2
-      ball.x_speed = -3
-      ball.y_speed = Math.floor(Math.random() * 7) + -3
+      ball.reset()
 
 	step: ->
 		@move()

@@ -5,6 +5,12 @@ window.Ball = (x, y) ->
 	@x_speed = -3
 	@y_speed = Math.floor(Math.random() * 7) + -3
 
+Ball::reset = ->
+	ball.x = canvas.width / 2
+	ball.y = canvas.height / 2
+	ball.x_speed = 3
+	ball.y_speed = Math.floor(Math.random() * 7) + -3
+
 Ball::move = ->
 	@x += @x_speed
 	@y += @y_speed

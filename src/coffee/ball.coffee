@@ -23,7 +23,7 @@ Ball::move = ->
 	else if bottom_wall > canvas.height
 		@y = canvas.height - @radius
 		@y_speed = -@y_speed
-#
+
 	if ball.x_speed < 0 and ball.x - @radius < paddle.x + paddle.width and ball.y > paddle.y and ball.y < paddle.y + paddle.height
 	  @x_speed = Math.abs(@x_speed)
 	  if @y_speed > 0
@@ -32,16 +32,7 @@ Ball::move = ->
 	    ball.y_speed--
 	else if ball.x_speed > 0 and ball.x + @radius > computer.x and ball.y > computer.y and ball.y < computer.y + computer.height
 	  @x_speed = -Math.abs(@x_speed)
-	  @x_speed--
-
-	if leftScore == 11
-		document.getElementById('winner').innerText = "Player 1 wins! Refresh to play again."
-		@x_speed = 0
-		@y_speed = 0
-	else if rightScore == 11
-		document.getElementById('winner').innerText = "Computer wins! Refresh to play again."
-		@x_speed = 0
-		@y_speed = 0
+	  @x_speed--	
 
 Ball::render = ->
 	context.beginPath()

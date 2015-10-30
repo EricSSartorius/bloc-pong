@@ -56,6 +56,16 @@
       }
     };
 
+    if (Game.leftScore === 11) {
+      document.getElementById('winner').innerText = "Player 1 wins! Refresh to play again.";
+      Game.x_speed = 0;
+      Game.y_speed = 0;
+    } else if (Game.rightScore === 11) {
+      document.getElementById('winner').innerText = "Computer wins! Refresh to play again.";
+      Game.x_speed = 0;
+      Game.y_speed = 0;
+    }
+
     Game.prototype.step = function() {
       this.move();
       this.render();

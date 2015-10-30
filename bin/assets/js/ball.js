@@ -31,22 +31,13 @@
     if (ball.x_speed < 0 && ball.x - this.radius < paddle.x + paddle.width && ball.y > paddle.y && ball.y < paddle.y + paddle.height) {
       this.x_speed = Math.abs(this.x_speed);
       if (this.y_speed > 0) {
-        this.y_speed++;
+        return this.y_speed++;
       } else {
-        ball.y_speed--;
+        return ball.y_speed--;
       }
     } else if (ball.x_speed > 0 && ball.x + this.radius > computer.x && ball.y > computer.y && ball.y < computer.y + computer.height) {
       this.x_speed = -Math.abs(this.x_speed);
-      this.x_speed--;
-    }
-    if (leftScore === 11) {
-      document.getElementById('winner').innerText = "Player 1 wins! Refresh to play again.";
-      this.x_speed = 0;
-      return this.y_speed = 0;
-    } else if (rightScore === 11) {
-      document.getElementById('winner').innerText = "Computer wins! Refresh to play again.";
-      this.x_speed = 0;
-      return this.y_speed = 0;
+      return this.x_speed--;
     }
   };
 

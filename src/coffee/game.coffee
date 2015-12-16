@@ -35,19 +35,27 @@ class window.Game
       rightScore += 1
       scoreBoard.innerText = "#{leftScore} - #{rightScore}"
       ball.reset()
+      if rightScore >= 11
+      	document.getElementById('winner').innerText = "Computer wins! Refresh to play again."
+      	ball.x_speed = 0
+      	ball.y_speed = 0
     else if right_wall > canvas.width
       leftScore += 1
       scoreBoard.innerText = "#{leftScore} - #{rightScore}"
       ball.reset()
+      if leftScore >= 11
+      	document.getElementById('winner').innerText = "Player 1 wins! Refresh to play again."
+      	ball.x_speed = 0
+      	ball.y_speed = 0
 
-	if @leftScore == 11
-		document.getElementById('winner').innerText = "Player 1 wins! Refresh to play again."
-		@x_speed = 0
-		@y_speed = 0
-	else if @rightScore == 11
-		document.getElementById('winner').innerText = "Computer wins! Refresh to play again."
-		@x_speed = 0
-		@y_speed = 0
+	# if @leftScore >= 11
+	# 	document.getElementById('winner').innerText = "Player 1 wins! Refresh to play again."
+	# 	@x_speed = 0
+	# 	@y_speed = 0
+	# else if @rightScore >= 11
+	# 	document.getElementById('winner').innerText = "Computer wins! Refresh to play again."
+	# 	@x_speed = 0
+	# 	@y_speed = 0
 
 	step: ->
 		@move()

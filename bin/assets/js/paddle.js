@@ -14,11 +14,11 @@
   };
 
   Paddle.prototype.goUp = function() {
-    return this.y_speed -= 10;
+    return this.y_speed -= 5;
   };
 
   Paddle.prototype.goDown = function() {
-    return this.y_speed += 10;
+    return this.y_speed += 5;
   };
 
   Paddle.prototype.move = function() {

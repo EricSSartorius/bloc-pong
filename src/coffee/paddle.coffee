@@ -10,10 +10,10 @@ Paddle::render = ->
 	context.fillRect @x, @y, @width, @height
 
 Paddle::goUp = ->
-	@y_speed -= 10
+	@y_speed -= 5
 
 Paddle::goDown = ->
-	@y_speed += 10
+	@y_speed += 5
 
 Paddle::move = ->
 	@y += @y_speed

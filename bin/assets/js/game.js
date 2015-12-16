@@ -48,23 +48,23 @@
       if (left_wall < 0) {
         rightScore += 1;
         scoreBoard.innerText = "" + leftScore + " - " + rightScore;
-        return ball.reset();
+        ball.reset();
+        if (rightScore >= 11) {
+          document.getElementById('winner').innerText = "Computer wins! Refresh to play again.";
+          ball.x_speed = 0;
+          return ball.y_speed = 0;
+        }
       } else if (right_wall > canvas.width) {
         leftScore += 1;
         scoreBoard.innerText = "" + leftScore + " - " + rightScore;
-        return ball.reset();
+        ball.reset();
+        if (leftScore >= 11) {
+          document.getElementById('winner').innerText = "Player 1 wins! Refresh to play again.";
+          ball.x_speed = 0;
+          return ball.y_speed = 0;
+        }
       }
     };
-
-    if (Game.leftScore === 11) {
-      document.getElementById('winner').innerText = "Player 1 wins! Refresh to play again.";
-      Game.x_speed = 0;
-      Game.y_speed = 0;
-    } else if (Game.rightScore === 11) {
-      document.getElementById('winner').innerText = "Computer wins! Refresh to play again.";
-      Game.x_speed = 0;
-      Game.y_speed = 0;
-    }
 
     Game.prototype.step = function() {
       this.move();
